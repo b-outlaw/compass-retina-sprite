@@ -1,0 +1,20 @@
+@mixin retina-sprite($name, $retina-sprite-default-map: $sprite-map, $retina-sprite-default-map2x: $sprite-map2x) {
+	// $retina-sprite-default-map and $retina-sprite-default-map2x to  $sprite-map and $sprite-map2x global var
+	@if $retina-sprite-enable-dimension == true {
+		@include sprite-dimensions($retina-sprite-default-map, $name);
+	}
+
+	background-image: sprite-url($retina-sprite-default-map);
+	background-position: sprite-position($retina-sprite-default-map, $name);
+	background-repeat: no-repeat;
+	background-color: transparent;
+
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+		& {
+			$sprite-map2x-position: sprite-position($retina-sprite-default-map2x, $name);
+			background-image: sprite-url($retina-sprite-default-map2x);
+			background-position: nth($sprite-map2x-position, 1) nth($sprite-map2x-position, 2) / 2;
+			@include background-size(ceil(image-width(get_compass_option(generated_images_path) + '/' + sprite-path($retina-sprite-default-map2x)) / 2) auto);
+		}
+	}
+}

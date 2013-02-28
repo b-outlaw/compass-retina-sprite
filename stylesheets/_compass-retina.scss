@@ -1,0 +1,12 @@
+// Retina-sprite ------------------------------------------------------------
+// Plugin by Mauro Verrocchio - mauroverrocchio@gmail.com
+
+// Retina-enabled sprite map
+
+// Defaults ------------------------------------------------------------------
+
+// Generate the css rules for dimension (width, height)
+$retina-sprite-enable-dimension: true !default;
+
+// Import --------------------------------------------------------------------
+@import "retina-sprite/retina-sprite-mixin";
